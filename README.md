@@ -79,7 +79,7 @@ Added `"plugins": ["istanbul"]`:
 
 ## VSCode setting
 
-### First step：add VSCode specific setups in webpack.
+### First step：add VSCode specific setups in webpack
 
 ```js
 // # webpack.config.js
@@ -97,7 +97,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 ```
 
-### Second step：add launch configuration snippets.
+### Second step：add launch configuration snippets
 
 ```json
 {
