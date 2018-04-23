@@ -68,5 +68,9 @@ if (process.env.NODE_ENV === 'production') {
 // test specific setups
 if (process.env.NODE_ENV === 'test') {
   module.exports.externals = [require('webpack-node-externals')()]
-  module.exports.devtool = 'eval'
+  module.exports.devtool = 'eval' //If you would to use breakpoint in vscode, then must be set devtool to "eval"
+  module.exports.output = Object.assign(module.exports.output, {
+    devtoolModuleFilenameTemplate: "[absolute-resource-path]",
+    devtoolFallbackModuleFilenameTemplate: "[absolute-resource-path]?[hash]"
+  });
 }

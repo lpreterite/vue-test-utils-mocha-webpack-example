@@ -77,6 +77,59 @@ Added `"plugins": ["istanbul"]`:
 }
 ```
 
+## VSCode setting
+
+### First step：add VSCode specific setups in webpack.
+
+```js
+// # webpack.config.js
+
+// test specific setups
+if (process.env.NODE_ENV === 'test') {
+  module.exports.externals = [require('webpack-node-externals')()]
+
+  //If you would to use breakpoint in vscode, then must be set devtool to "eval"
+  module.exports.devtool = 'eval'
+  module.exports.output = Object.assign(module.exports.output, {
+    devtoolModuleFilenameTemplate: "[absolute-resource-path]",
+    devtoolFallbackModuleFilenameTemplate: "[absolute-resource-path]?[hash]"
+  });
+}
+```
+
+### Second step：add launch configuration snippets.
+
+```json
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Mocha-webpack Tests",
+    "program": "${workspaceFolder}/node_modules/mocha-webpack/bin/mocha-webpack",
+    "args": [
+        "-u",
+        "tdd",
+        "--full-trace",
+        "--timeout",
+        "999999",
+        "--colors",
+        "--webpack-config",
+        "webpack.config.js",
+        "--require",
+        "test/setup.js",
+        "test/**/*.spec.js"
+    ],
+    "sourceMaps": true,
+    "env": {
+        "NODE_ENV": "test"
+    },
+    "internalConsoleOptions": "openOnSessionStart"
+},
+```
+
+more see [.vscode/launch.json](./vscode/launch.json)
+
+Now you can debug in VSCode.
+
 ## Build Setup
 
 ``` bash
