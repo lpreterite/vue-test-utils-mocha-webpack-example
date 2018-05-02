@@ -130,6 +130,10 @@ more see [.vscode/launch.json](./vscode/launch.json)
 
 Now you can debug in VSCode.
 
+## Mock Request Test
+
+Test axios request example using [axios-mock-adapter](https://www.npmjs.com/package/axios-mock-adapter), More see [test/ajax.example.js](./test/ajax.example.js)
+
 ## Build Setup
 
 ``` bash
