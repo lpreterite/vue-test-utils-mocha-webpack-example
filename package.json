@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "author": "Evan You <yyx990803@gmail.com>",
   "private": true,
+  "engines": {
+    "node": "=8.16.x"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
